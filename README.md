@@ -1,5 +1,5 @@
 # VerusMiningGui
-A Verus Mining GUI for nheqminer. Tested with VerusHash 2.0 nheqminer 0.7.1 Windows build.
+A Verus Mining GUI for nheqminer. Not Yet Tested with VerusHash 2.0 nheqminer 0.7.1 Windows build.
     -This software is an adaptation of VerusMiningGui, forked from the original git at https://github.com/moisesmcardona/VerusMiningGui
 
 This software is written in Visual Basic .NET using Visual Studio 2015.
@@ -13,7 +13,7 @@ You can minimize the GUI and it will keep mining in the System Tray. Double clic
 That's all. Enjoy!
 
 # Changelog
-v0.4 (01/18/2019) </br>
+v0.3b (01/18/2019) </br>
 -Forked from original repo by moisesmcardona
 -Rebranded for Verus Coin
 -Adapted for VerusHash nheqminer 0.7.1
