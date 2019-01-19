@@ -3,11 +3,12 @@
     Private intStop As Integer
     Private swReader As System.IO.StreamReader
     Private thrdCMD As System.Threading.Thread
-    Private Delegate Sub Update()
-    Private uFin As New Update(AddressOf UpdateText)
+    Private Delegate Sub UpdateOut()
+    Private uFin As New UpdateOut(AddressOf UpdateText)
     Private Server As String = ""
     Private Address As String = ""
     Private Worker As String = ""
+    Private WorkerLead As String = ""
     Private ThreadsAndBlocksCommand As String = ""
     Private CPUThreads As Integer = 0
 
@@ -17,7 +18,6 @@
         MinerConsole.Focus()
         intStop = MinerConsole.SelectionStart
         MinerConsole.ScrollToCaret()
-
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim ValidationError As Boolean = False
@@ -29,9 +29,11 @@
             ErrorMessage += "-Address field is empty" & vbNewLine
         End If
         If String.IsNullOrEmpty(WorkerField.Text) = False Then
-            Worker = "." & WorkerField.Text
+            Worker = WorkerField.Text
+            WorkerLead = "."
         Else
             Worker = ""
+            WorkerLead = ""
         End If
         If String.IsNullOrEmpty(ServerField.Text) = False Then
             Server = ServerField.Text
@@ -73,7 +75,7 @@
         End If
     End Sub
     Private Sub Miner()
-        Dim ArgumentsToUse As String = " -v " & "-l " & Server & " -u " & Address & Worker & " -t " & CPUThreads
+        Dim ArgumentsToUse As String = " -v " & "-l " & Server & " -u " & Address & WorkerLead & Worker & " -t " & CPUThreads & "%1 %2 %3 %4 %5 %6 %7 %8 %9"
         Dim procMiner As New Process
         If ShowCMD.Checked Then
             procMiner.StartInfo.RedirectStandardOutput = False
@@ -86,6 +88,7 @@
         Else
             AddHandler procMiner.OutputDataReceived, AddressOf MinerOutput
             procMiner.StartInfo.RedirectStandardOutput = True
+            procMiner.StartInfo.RedirectStandardError = False
             procMiner.StartInfo.CreateNoWindow = True
             procMiner.StartInfo.UseShellExecute = False
             procMiner.StartInfo.FileName = System.IO.Directory.GetCurrentDirectory & "\nheqminer.exe"
@@ -126,14 +129,14 @@
                         getdata = line.Split("=")
                         result = getdata(1)
                         AddressField.Text = result
+                    ElseIf line.Contains("Worker") Then
+                        getdata = line.Split("=")
+                        result = getdata(1)
+                        WorkerField.Text = result
                     ElseIf line.Contains("Server") Then
                         getdata = line.Split("=")
                         result = getdata(1)
-                        If result = "usa" Or result = "eu" Then
-                            ServerField.Text = ""
-                        Else
-                            ServerField.Text = result
-                        End If
+                        ServerField.Text = result
                     ElseIf line.Contains("CPUThreads") Then
                         getdata = line.Split("=")
                         result = getdata(1)
