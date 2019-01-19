@@ -4,11 +4,15 @@ A Verus Mining GUI for nheqminer. Tested with VerusHash 2.0 nheqminer 0.7.1 Wind
 
 This software is written in Visual Basic .NET using Visual Studio 2015. Compiled for .NET Framework 4.6.1
 
-To use it, you must first download the VerusHash "nheqminer" and place the executable "nheqminer.exe" and all of the nheqminer files inside a folder called "nheqminer" which should be created in the same folder where you download the Verus Mining GUI. The software will lead you to the github repo for the VerusHash nheqminer releases so you can download it and start mining, or you can download it from here: https://github.com/VerusCoin/nheqminer/releases
+To use:
+1. Rirst download the VerusHash "nheqminer" from https://github.com/VerusCoin/nheqminer/releases and place the executable "nheqminer.exe" inside a folder called "nheqminer"
+2. Download the latest release of Verus EZ CPU Pool Miner from https://github.com/Nine27/VerusEZCPUPoolMiner/releases and place the executable "VerusEZCPUPoolMiner.exe" in the same "nheqminer" folder
+3. Run the "VerusEZCPUPoolMiner.exe" binary and enter a valid Verus (VRSC) wallet you own and the pool server as poolurl:port, then click Start Mining!
 
-To mine Verus Coin (VRSC), just fill out the details and press the "Start Mining!" button. After that, you will see your mining progress in the Miner Output section. It may not be realtime, but it will display the progress.
+If you have any trouble, join the Verus discord at https://discord.gg/VRKMP2S and ask for help!
 
-You can minimize the GUI and it will keep mining in the System Tray. Double click it to show the software.
+- If the output of the miner doesn't show realtime, choose the checkbox "Show CMD Window" to see realtime mining output.
+- You can minimize the GUI and it will keep mining in the System Tray. Double click it to show the software.
 
 That's all. Enjoy!
 
